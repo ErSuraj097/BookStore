@@ -10,7 +10,14 @@ import userRoute from "./route/user.route.js";
 const app = express();
 
 app.use(
-    cors()
+    cors(
+        {
+            "origin": process.env.FRONTEND_URL || "*",
+            "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+            "preflightContinue": false,
+            "optionsSuccessStatus": 204
+          }
+    )
   );
   
 
