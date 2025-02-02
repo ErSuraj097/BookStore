@@ -4,15 +4,19 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
+
 import axios from "axios";
 
 import Cards from "./Cards";
+import { BACKEND_URL } from "../utils/utils";
+
+
 function Freebook() {
   const [book, setBook] = useState([]);
   useEffect(() => {
     const getBook = async () => {
       try {
-        const res = await axios.get("http://localhost:4001/book");
+        const res = await axios.get(`${BACKEND_URL}/book`);
 
         const data = res.data.filter((data) => data.category === "Free" || data);
         console.log(data);

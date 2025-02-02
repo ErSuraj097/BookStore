@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { BACKEND_URL } from "../utils/utils";
 function Login() {
   const {
     register,
@@ -19,7 +20,7 @@ function Login() {
     console.log(userInfo)
 
     try {
-      const res = await axios.post("http://localhost:4001/user/login", userInfo);
+      const res = await axios.post(`${BACKEND_URL}/user/login`, userInfo);
       console.log(res);
     
       if (res.data ) {
